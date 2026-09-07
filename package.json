@@ -1,0 +1,20 @@
+{
+  "key": "rollouts",
+  "title": "Argo Rollouts",
+  "namespace": "argo-rollouts",
+  "demoNamespace": "rollouts-demo",
+  "charts": [],
+  "sources": [
+    {
+      "file": "vendor/kubernetes-crd-openapi.json",
+      "url": "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.35.0/api/openapi-spec/v3/apis__apiextensions.k8s.io__v1_openapi.json",
+      "sha256": "f6eb40887f8ce499c83f6032da1b35f980ecf8e6a312c06078f1356e3aa3d3e4"
+    },
+    {
+      "file": "vendor/rollouts-install.yaml",
+      "url": "https://github.com/argoproj/argo-rollouts/releases/download/v1.10.0/install.yaml",
+      "sha256": "ca8a1785391026023627c8a12db5422e227d7a7a6ec7c01f99f7d5b1726ed53c"
+    }
+  ],
+  "tools": []
+}
