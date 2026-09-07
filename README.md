@@ -6,6 +6,21 @@
 
 Independent deployment examples maintained by imos64. Upstream software remains maintained by its respective authors. This collection does not claim a measured ranking or that every tool independently performs continuous Git reconciliation.
 
+## High-Level Architecture
+
+A Git delivery controller or operator submits Rollout resources. Argo Rollouts manages ReplicaSets and Service selection; the baseline requires manual promotion before blue/green traffic switches.
+
+```mermaid
+flowchart LR
+Git["Rollout manifests in Git"] --> Delivery["Operator or configured Git delivery controller"]
+Delivery --> Controller["Argo Rollouts controller"]
+Controller --> Revisions["Active and preview ReplicaSets"]
+Review["Preview review and manual promotion"] --> Controller
+Clients["Application clients"] --> Service["Active Service: controller-managed selector"]
+Service --> Revisions
+Preview["Preview Service"] --> Revisions
+```
+
 ## Local validation
 
 Requirements: Linux amd64, Python 3.12+, Helm 3.21.3 and Make. CLI downloads are checksum-verified and placed in ignored `.tools/`. Internet access is needed for tools and Kubernetes schemas. Docker is needed for werf's container smoke test.
